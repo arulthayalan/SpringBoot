@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'war'
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
+}
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:2.1.2.RELEASE'
+
+    }
+}
+
+group 'au.com.template'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+springBoot {
+    mainClassName = 'au.com.template.Application'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.1'
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
+}
+
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.7'
+}
