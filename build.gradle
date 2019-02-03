@@ -10,6 +10,7 @@ apply plugin: "io.spring.dependency-management"
 dependencyManagement {
     imports {
         mavenBom 'org.springframework.boot:spring-boot-dependencies:2.1.2.RELEASE'
+        mavenBom 'software.amazon.awssdk:bom:2.2.0'
 
     }
 }
@@ -33,6 +34,12 @@ springBoot {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework:spring-jms'
+    compile 'org.springframework.cloud:spring-cloud-aws-messaging:2.1.0.RELEASE'
+
+    //compile 'software.amazon.awssdk:aws-java-sdk'
+   // compile 'software.amazon.awssdk:dynamodb'
+    compile 'com.amazonaws:amazon-sqs-java-messaging-lib:1.0.4'
 
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
